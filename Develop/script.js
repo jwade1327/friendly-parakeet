@@ -1,29 +1,49 @@
 // Assignment code here
-// Array Options
+
+// Arrays
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var number = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-var specialCharacter = ["!", "~", "/", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", ".", "-", "?"];
+var specialCharacter = ["!", "@", "#", "$", "%", "^", "&", "*", "/", "-", "+", "~"];
 
 // Prompt for password length
 function generatePassword() {
   var passwordLength = (prompt("How many characters would you like for your password?"));
-  while (passwordLength <= 8 || passwordLength >= 128) {
-    window.alert("Incorrect number of characters for your password. Enter a number between 8-128.");
-    var passwordLength = (prompt("How many characters would you like for your password?"));
-  }
+    while (passwordLength <= 8 || passwordLength >= 128) {
+      window.alert("Incorrect number of characters for your password. Enter a number between 8-128.");
+      var passwordLength = (prompt("How many characters would you like for your password?"));
+    }
   window.alert("OK. Your password will have " + passwordLength + " characters.");
 
-// Case, numeric and special characters for password confirmation
-var lowerCase = (window.alert("Your password must contain a lower case character. Click OK."));
-var upperCase = (window.alert("Your password must contain an upper case character. Click OK."));
-var number = (window.alert("Your password must contain a number. Click OK."));
-var specialCharacter = (window.alert("Your password must contain a special character. Click OK."));
+  var hasLowerCase = confirm("Your password must contain a lower case character. Click OK.");
+  var hasUpperCase = confirm("Your password must contain an upper case character. Click OK.");
+  var hasNumber = confirm("Your password must contain a number. Click OK.");
+  var hasSpecialCharacter = confirm("Your password must contain a special character. Click OK.");
+}
 
+  var passwordRequirements = {
+    length: length,
+    hasLowerCase: hasLowerCase,
+    hasUpperCase: hasUpperCase,
+    hasNumber: hasNumber,
+    hasSpecialCharacter: hasSpecialCharacter
+  }
 
+  return passwordRequirements;
+
+  function randomPassword(array) {
+    var random = Math.floor(Math.random() * array.length);
+    var random1 = array[random];
+  
+    return random1;
 };
- 
-    
+
+function()
+
+  for (var i = 0; i < options.length; i++) {
+    var 
+  }
+  
     
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
