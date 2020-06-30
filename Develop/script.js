@@ -5,13 +5,15 @@ var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var number = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 var specialCharacter = ["!", "@", "#", "$", "%", "^", "&", "*", "/", "-", "+", "~"];
+var passwordLength;
+var passwordArray = [];
 
 // Prompt for password length
 function generatePassword() {
-  var passwordLength = (prompt("How many characters would you like for your password?"));
+  passwordLength = parseInt(prompt("How many characters would you like for your password?"));
     while (passwordLength <= 8 || passwordLength >= 128) {
       window.alert("Incorrect number of characters for your password. Enter a number between 8-128.");
-      var passwordLength = (prompt("How many characters would you like for your password?"));
+      passwordLength = parseInt(prompt("How many characters would you like for your password?"));
     }
   window.alert("OK. Your password will have " + passwordLength + " characters.");
 
@@ -31,6 +33,13 @@ function generatePassword() {
 
   return passwordRequirements;
 
+  for (i = 0; i < passwordLength; i++) {
+    passwordArray.push(randomPassword(lowerCase))
+    
+  }
+
+  console.log(passwordArray);
+  
   function randomPassword(array) {
     var random = Math.floor(Math.random() * array.length);
     var random1 = array[random];
