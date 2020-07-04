@@ -33,27 +33,28 @@ function generatePassword() {
 
   return passwordRequirements;
 
-  for (i = 0; i < passwordLength; i++) {
-    passwordArray.push(randomPassword(lowerCase))
-    
-  }
-
-  console.log(passwordArray);
-  
   function randomPassword(array) {
     var random = Math.floor(Math.random() * array.length);
     var random1 = array[random];
   
     return random1;
-};
-
-function()
-
-  for (var i = 0; i < options.length; i++) {
-    var 
   }
-  
+
+
+
+  for (i = 0; i < passwordLength; i++) {
+    passwordArray.push(randomPassword(lowerCase));
+    passwordArray.push(randomPassword(upperCase));
+    passwordArray.push(randomPassword(number));
+    passwordArray.push(randomPassword(specialCharacter));
     
+  }
+
+  console.log(passwordArray);
+  
+
+};
+  
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
