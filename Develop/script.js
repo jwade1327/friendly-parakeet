@@ -9,52 +9,65 @@ var passwordLength;
 var passwordArray = [];
 
 // Prompt for password length
-function generatePassword() {
+function userInfomation() {
   passwordLength = parseInt(prompt("How many characters would you like for your password?"));
-    while (passwordLength <= 8 || passwordLength >= 128) {
-      window.alert("Incorrect number of characters for your password. Enter a number between 8-128.");
-      passwordLength = parseInt(prompt("How many characters would you like for your password?"));
-    }
-  window.alert("OK. Your password will have " + passwordLength + " characters.");
+  while (passwordLength <= 8 || passwordLength >= 128) {
+    alert("Incorrect number of characters for your password. Enter a number between 8-128.");
+    passwordLength = parseInt(prompt("How many characters would you like for your password?"));
+  }
+  alert("OK. Your password will have " + passwordLength + " characters.");
 
   var hasLowerCase = confirm("Your password must contain a lower case character. Click OK.");
   var hasUpperCase = confirm("Your password must contain an upper case character. Click OK.");
   var hasNumber = confirm("Your password must contain a number. Click OK.");
   var hasSpecialCharacter = confirm("Your password must contain a special character. Click OK.");
-}
-
+  // Conditional statement to make sure they make a choice
+  if (hasLowerCase === false &&
+    hasUpperCase === false &&
+    hasNumber === false &&
+    hasSpecialCharacter === false) {
+    alert("Choose one character.");
+    return;
+  }
   var passwordRequirements = {
-    length: length,
+    length: passwordLength,
     hasLowerCase: hasLowerCase,
     hasUpperCase: hasUpperCase,
     hasNumber: hasNumber,
     hasSpecialCharacter: hasSpecialCharacter
-  }
+  };
 
   return passwordRequirements;
+}
 
-  function randomPassword(array) {
-    var random = Math.floor(Math.random() * array.length);
-    var random1 = array[random];
-  
-    return random1;
+function randomPassword(array) {
+  var random = Math.floor(Math.random() * array.length);
+  var random1 = array[random];
+
+  return random1;
+}
+
+
+function generatePassword() {
+  var userInfo = userInfomation();
+  var passwordOptions = [];
+  if (userInfo.hasLowerCase) {
+    passwordOptions = passwordOptions.concat(lowerCase);
   }
-
-
-
-  for (i = 0; i < passwordLength; i++) {
-    passwordArray.push(randomPassword(lowerCase));
-    passwordArray.push(randomPassword(upperCase));
-    passwordArray.push(randomPassword(number));
-    passwordArray.push(randomPassword(specialCharacter));
-    
+  if (userInfo.hasUpperCase) {
+    passwordOptions = passwordOptions.concat(upperCase);
   }
-
-  console.log(passwordArray);
-  
-
-};
-  
+  if (userInfo.hasNumber) {
+    passwordOptions = passwordOptions.concat(number);
+  }
+  if (userInfo.hasSpecialCharacter) {
+    passwordOptions = passwordOptions.concat(specialCharacter);
+  }
+  for (var i = 0; i < userInfo.length; i++) {
+    passwordArray.push(randomPassword(passwordOptions));
+  }
+  return passwordArray.join("");
+}
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
